@@ -108,7 +108,7 @@ def get_second_method(disassembled):
     second_method = disassembled[j+2].argval
     return second_method
 
-def deobfuscate_b64(obfuscated):
+def stage1(obfuscated):
     # base64
     match = re.search(r'binascii.a2b_base64\(b\'(.*?)\'\)', obfuscated)
     if match:
@@ -190,4 +190,4 @@ if len(sys.argv) < 2:
 with open(sys.argv[1], 'r') as f:
     obfuscated = f.read()
 
-deobfuscate_b64(obfuscated)
+stage1(obfuscated)
